@@ -1,0 +1,21 @@
+  /* Styles for the web application */
+
+  /* footer color */
+  .darkToneModify {
+    background-color: #1a1a2e;
+    margin-top: 30px;
+  }
+
+  /* Font size 0.9rem*/
+  .fsMin9Modify {
+    font-size: 0.9rem;
+  }
+  
+  @media screen and (max-width: 560px) {
+    
+    
+    .minModify {
+        margin-top: 10px;
+        width: 100%;
+    }
+  }
