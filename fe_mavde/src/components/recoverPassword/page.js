@@ -1,5 +1,6 @@
 "use client"
 
+import styles from './page.module.css';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Modal from 'react-bootstrap/Modal';
@@ -77,13 +78,14 @@ export default function RecoverPassword() {
 
     return (
         <>
-            <Button 
-                variant="link" 
-                className={`link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0`}
-                onClick={handleShow}>
-                Recupera tu contraseña
-            </Button>
-
+            <span className={`${styles.fsMin9Modify}`}>
+                <a
+                    type="submit"
+                    className={`link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 p-1`}
+                    onClick={handleShow}>
+                    Recupera tu contraseña
+                </a>
+            </span>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Cambia tu contraseña desde tu email</Modal.Title>

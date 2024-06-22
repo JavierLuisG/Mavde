@@ -1,5 +1,6 @@
 "use client";
 
+import styles from './page.module.css';
 import NavbarSystem from '../../components/navbarSystem/page';
 import Footer from '../../components/footer/page';
 import { useEffect, useState } from 'react';
@@ -57,11 +58,12 @@ export default function Products() {
                 id: response.id,
                 sku_code: response.sku_code,
                 name: response.name,
-                product_type: response.product_type,
+                gender_type: response.gender_type,
                 quantity: response.quantity,
                 price: response.price,
-                latitude: response.latitude,
-                longitude: response.longitude
+                color: response.color,
+                brand: response.brand,
+                size: response.size
             }));
             router.push(`/products/${code}`);
         }).catch(error => console.log(error));
@@ -77,27 +79,33 @@ export default function Products() {
                             <Form.Control className="me-auto" placeholder="Ingresa el SKU del producto" />
                             <Button variant="primary">Buscar</Button>
                         </Stack>
-                        <Button className='m-3 w-50' variant="success" href='/products/create'>Crea tu nuevo producto</Button>
                     </Row>
                     <Row className="d-flex justify-content-evenly">
                         {products && products.length > 0 && products.map(product => (
-                            <Card className="my-3 shadow-sm" key={product.id} style={{ width: '18rem' }}>
-                                <Card.Body
+                            <Card className="my-3 p-0 shadow-sm" key={product.id} style={{ width: '18rem' }}>
+                                <Card.Body className={`p-0`}
                                     onClick={value => getProduct(product.sku_code)}>
-                                    <Card.Title>{product.name}</Card.Title>
-                                    <Card.Text>
+                                    <div className='position-relative'>
+                                        <Card.Img className={`rounded-4 rounded-top-0`} variant="top" src="/img/shoes/adidas-2244.png" />
+                                        <Card.Title className='mt-3 position-absolute top-0 start-50 translate-middle-x w-100'>{product.name}</Card.Title>
+                                    </div>
+                                    <Card.Text className='text-start m-3'>
                                         SKU: {product.sku_code} <br />
-                                        Tipo: {product.product_type} <br />
                                         Cantidad disponible: {product.quantity} <br />
-                                        Latitud: {product.latitude} <br />
-                                        Longitud: {product.longitude} <br />
+                                        Color: {product.color} <br />
+                                        Marca: {product.brand} <br />
+                                        Género: {product.gender_type} <br />
+                                        Talla: {product.size} <br />
                                         Precio: {product.price}
                                     </Card.Text>
-                                    <Button variant="primary w-100">Seleccionar</Button>
+                                    <Button variant="primary mb-3 w-75">Seleccionar</Button>
                                 </Card.Body>
                             </Card>
                         ))}
                     </Row>
+                    <Button className={`rounded-circle fs-1 ${styles.btnRounded}`} href='/products/create'>
+                        +
+                    </Button>
                 </Col>
             </Row>
             <Footer />

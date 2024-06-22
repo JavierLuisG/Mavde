@@ -13,14 +13,10 @@ export default function PrincipalPage() {
       <NavbarSystem />
       <Row className={`align-items-center text-center`}>
         <Row className='bg-light py-5'>
-          <h1>
-            Bienvenido a Mavde
-          </h1>
-          <span>
-            En Mavde, estamos revolucionando la forma en que las empresas gestionan sus clientes, productos y más.
-            <br />
-            Estamos para ofrecerte las herramientas más innovadoras y eficientes para la administración de tu negocio.
-          </span>
+          <h1>Mavde to Admin</h1>
+          <h3>
+            Diseñado para la comodidad de tus gestiones.
+          </h3>
         </Row>
         <Col className={`d-flex justify-content-evenly`}>
           <Card className='m-3' style={{ width: '18rem' }}>

@@ -1,0 +1,26 @@
+/* Styles for the web application */
+
+/* Font size 0.9rem*/
+.fsMin9Modify {
+    font-size: 0.9rem;
+}
+
+.loginColor {
+    background-color: rgb(221, 221, 221);
+}
+
+.imgWidth {
+    width: 550px;
+}
+
+.textColor {
+    Color: rgb(163, 33, 180);
+}
+
+.btnColor {
+    background-color: rgb(163, 33, 180);
+}
+
+.btnColor:hover {
+    background-color: rgb(129, 25, 143);
+}

@@ -7,11 +7,13 @@ var mongoose = require("mongoose");
 var schema = new mongoose.Schema({
     sku_code: { type: String, unique: true, required: true },
     name: { type: String, unique: true, required: true },
-    product_type: { type: String, required: true },
+    //image: { data: Buffer, contentType: String },
+    gender_type: { type: String, required: true },
     quantity: { type: Number, required: true },
     price: { type: Number, required: true },
-    latitude: { type: String, required: true },
-    longitude: { type: String, required: true },
+    color: { type: String, required: true },
+    brand: { type: String, required: true },
+    size: { type: String, required: true },
     status: { type: Boolean, required: false}
 });
 

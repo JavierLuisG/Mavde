@@ -17,11 +17,12 @@ export default function CreateProduct() {
     // generar los estados con modificadores
     const [sku, setSku] = useState();
     const [name, setName] = useState();
-    const [productType, setProductType] = useState();
+    const [genderType, setGenderType] = useState();
     const [quantity, setQuantity] = useState();
     const [price, setPrice] = useState();
-    const [latitude, setLatitude] = useState();
-    const [longitude, setLongitude] = useState();
+    const [color, setColor] = useState();    
+    const [brand, setBrand] = useState();    
+    const [size, setSize] = useState();    
     // generar un objeto del user parar enviar la data
     const [product, setProduct] = useState(null);
 
@@ -65,11 +66,12 @@ export default function CreateProduct() {
                 localStorage.setItem('product', JSON.stringify({
                     sku_code: response.sku_code,
                     name: response.name,
-                    product_type: response.product_type,
+                    gender_type: response.gender_type,
                     quantity: response.quantity,
                     price: response.price,
-                    latitude: response.latitude,
-                    longitude: response.longitude
+                    color: response.color,
+                    brand: response.brand,
+                    size: response.size
                 }));
                 router.push('/products');
             }).catch(error => console.error(error));
@@ -126,11 +128,12 @@ export default function CreateProduct() {
         setProduct(buildData({
             skuCode: sku,
             name: name,
-            productType: productType,
+            genderType: genderType,
             quantity: quantity,
+            color: color,
             price: price,
-            latitude: latitude,
-            longitude: longitude
+            brand: brand,
+            size: size
         }));
     };
 
@@ -140,11 +143,12 @@ export default function CreateProduct() {
             buil = {
                 sku_code: data.skuCode,
                 name: data.name,
-                product_type: data.productType,
+                gender_type: data.genderType,
                 quantity: data.quantity,
                 price: data.price,
-                latitude: data.latitude,
-                longitude: data.longitude
+                color: data.color,
+                brand: data.brand,
+                size: data.size
             }
         }
         return buil;
@@ -161,7 +165,7 @@ export default function CreateProduct() {
                     <Form>
                         <div className={`shadow-lg p-4 rounded-4 bg-white ${styles.inputWidthModify}`}>
 
-                            <FloatingLabel controlId="firstname" label="SKU" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="sku" label="SKU" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -169,7 +173,7 @@ export default function CreateProduct() {
                                     className={`rounded-4`}
                                     onChange={event => onChange(event, setSku, null)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="firstname" label="Nombre" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="name" label="Nombre" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -177,45 +181,53 @@ export default function CreateProduct() {
                                     className={`rounded-4`}
                                     onChange={event => onChange(event, setName, textToCapitalize)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="firstname" label="Tipo de producto" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="brand" label="Marca" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
-                                    placeholder="Tipo de producto"
+                                    placeholder="brand"
                                     className={`rounded-4`}
-                                    onChange={event => onChange(event, setProductType, textToCapitalize)} />
+                                    onChange={event => onChange(event, setBrand, textToCapitalize)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Precio" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="gender" label="Género" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
-                                    placeholder="Precio"
+                                    placeholder="Género"
+                                    className={`rounded-4`}
+                                    onChange={event => onChange(event, setGenderType, textToCapitalize)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="color" label="Color" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Color"
+                                    className={`rounded-4`}
+                                    onChange={event => onChange(event, setColor, textToCapitalize)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="size" label="Talla" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Talla"
+                                    className={`rounded-4`}
+                                    onChange={event => onChange(event, setSize, null)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="price" label="Precio por unidad" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Precio por unidad"
                                     className={`rounded-4`}
                                     onChange={event => onChange(event, setPrice, null)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Cantidad" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="quantity" label="Cantidad" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
                                     placeholder="Cantidad"
                                     className={`rounded-4`}
                                     onChange={event => onChange(event, setQuantity, null)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Latitud" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Latitud"
-                                    className={`rounded-4`}
-                                    onChange={event => onChange(event, setLatitude, null)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Longitud" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Longitud"
-                                    className={`rounded-4`}
-                                    onChange={event => onChange(event, setLongitude, null)} />
                             </FloatingLabel>
                             <Button
                                 variant="primary"

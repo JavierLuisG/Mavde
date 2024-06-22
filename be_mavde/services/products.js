@@ -15,7 +15,7 @@ var Product = db.Product;
  * @method exec - Ejecutar la consulta y obtener los resultados 
  */
 var getAllProductsServices = async function () {
-    return Product.find({ status: true}).select("id sku_code name product_type quantity price latitude longitude status").exec();
+    return Product.find({ status: true}).select("id sku_code name gender_type quantity price color brand size status").exec();
 };
 
 /**
@@ -74,7 +74,7 @@ var createProductServices = async function (productParam) {
 var getProductBySkuServices = async function (sku_codeParam) {
     // 1.
     var productBySku = await Product.findOne({ sku_code: sku_codeParam, status: true })
-    .select("id sku_code name product_type quantity price latitude longitude status").exec();
+    .select("id sku_code name gender_type quantity price color brand size status").exec();
     // 2.
     if (!productBySku) {
         throw { code: 404, message: 'Product ' + sku_codeParam + ' not found' };
@@ -110,8 +110,14 @@ var updateProductBySkuServices = async function (sku_codeParam, productParam) {
     // 3.
     var productUpdate = await Product.findByIdAndUpdate(productFindForUpdate.id,
         {
-            name: productParam.name, product_type: productParam.product_type, quantity: productParam.quantity,
-            price: productParam.price, latitude: productParam.latitude, longitude: productParam.longitude
+            name: productParam.name, 
+            gender_type: productParam.gender_type, 
+            quantity: productParam.quantity,
+            price: productParam.price,
+            color: productParam.color, 
+            brand: productParam.brand,
+            size: productParam.size, 
+            longitude: productParam.longitude
         });
     // 4. si hay un error en la actualización, el valor de productUpdate será null
     if (!productUpdate) {

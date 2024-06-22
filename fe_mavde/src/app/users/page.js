@@ -4,11 +4,9 @@ import NavbarSystem from '../../components/navbarSystem/page';
 import Footer from '../../components/footer/page';
 import { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Stack from 'react-bootstrap/Stack';
 import { Col, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import SearchUser from '../../components/searchUser/page';
 
 export default function Users() {
 
@@ -56,13 +54,10 @@ export default function Users() {
     return (
         <Container fluid className='p-0'>
             <NavbarSystem />
-            <Row className={`my-2 text-center`}>
+            <Row className={`my-2 text-center vh-100`}>
                 <Col className={`d-flex flex-column align-items-center`}>
                     <Row className={`mx-auto p-4 d-flex justify-content-center`}>
-                        <Stack direction="horizontal" gap={3}>
-                            <Form.Control className="me-auto" placeholder="Ingresa el email del cliente" />
-                            <Button variant="primary">Buscar</Button>
-                        </Stack>
+                        <SearchUser/>
                     </Row>
                     <Row className="d-flex justify-content-evenly">
                         {users && users.length > 0 && users.map(user => (
@@ -80,43 +75,4 @@ export default function Users() {
             <Footer />
         </Container>
     );
-    /*
-        return (
-            <Container fluid className='p-0'>
-                <NavbarSystem />
-                <Row className={`my-2 text-center`}>
-                    <Col className={`d-flex flex-column align-items-center`}>
-                        <Row className={`mx-auto p-4 d-flex justify-content-center`}>
-                            <Stack direction="horizontal" gap={3}>
-                                <Form.Control className="me-auto" placeholder="Ingresa el email" />
-                                <Button variant="primary">Buscar</Button>
-                            </Stack>
-                        </Row>
-                        <Row>
-                            <Table striped bordered hover>
-                                <thead>
-                                    <tr>
-                                        <th>Nombre(s)</th>
-                                        <th>Apellido(s)</th>
-                                        <th>Email</th>
-                                        <th>phone</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {users && users.length > 0 && users.map(user => (
-                                        <tr key={user.id}>
-                                            <td>{user.firstname}</td>
-                                            <td>{user.lastname}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.phone}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table>
-                        </Row>
-                    </Col>
-                </Row>
-                <Footer />
-            </Container>
-        ); */
 };

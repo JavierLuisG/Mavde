@@ -123,53 +123,60 @@ export default function Login() {
     return (
         <Container fluid className='p-0'>
             <NavbarHome />
-            <Row className={`my-5 text-center`}>
-                <Col className={`d-flex flex-column align-items-center`}>
-                    <span className={`text-center mb-3 fs-2 fw-semibold`}>
-                        Bienvenido nuevamente
-                    </span>
-                    <Form>
-                        <div className={`shadow-lg p-4 rounded-4 bg-white ${styles.inputWidthModify}`}>
-                            <FloatingLabel controlId="email" label="Email" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    className={`rounded-4`}
-                                    onChange={event => onChange(event, setEmail, emailToCapitalize)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="password" label="Contraseña" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="password"
-                                    placeholder="Password"
-                                    className={`rounded-4`}
-                                    onChange={event => onChange(event, setPassword, encodeBase64)} />
-                            </FloatingLabel>
-                            <Button
-                                variant="primary"
-                                type="submit"
-                                className={`text-white w-100 my-2 p-2`}
-                                onClick={handleClick}>
-                                Ingresa
-                            </Button>
-                            <div className="text-end">
-                                <RecoverPassword />
+            <Container className={`my-5 text-center`}>
+                <Row>
+                    <Col className={`d-flex justify-content-center`}>
+                        <img src="/img/image3.png" className={`${styles.imgWidth}`}></img>
+                    </Col>
+                    <Col className={`d-flex flex-column align-items-center`}>
+                        <span className={`text-center mb-3 fs-2 fw-semibold`}>
+                            Bienvenido nuevamente
+                        </span>
+                        <Form>
+                            <div className={`pb-2 ${styles.fsMin9Modify}`}>
+                                ¿Aún no tienes tu cuenta?
+                                <a
+                                    href={'register'}
+                                    type="link"
+                                    className={`link-offset-2 link-underline link-underline-opacity-0 w-100 p-1 ${styles.textColor}`}>
+                                    Registrate
+                                </a>
                             </div>
-                            <Button
-                                href={'register'}
-                                variant="primary"
-                                type="button"
-                                className={`text-white w-100 my-2 p-2`}>
-                                Regístrate
-                            </Button>
-                        </div>
-                    </Form>
-                    <span className={`text-center mt-3 ${styles.fsMin9Modify}`}>
-                        Recuerda proteger tus datos
-                    </span>
-                </Col>
-            </Row>
+                            <div className={`shadow p-4 rounded-4 bg-white ${styles.inputWidthModify}`}>
+                                <FloatingLabel controlId="email" label="Email" className={`my-2 text-secondary`}>
+                                    <Form.Control
+                                        required
+                                        type="email"
+                                        placeholder="name@example.com"
+                                        className={`rounded-3`}
+                                        onChange={event => onChange(event, setEmail, emailToCapitalize)} />
+                                </FloatingLabel>
+                                <FloatingLabel controlId="password" label="Contraseña" className={`my-2 text-secondary`}>
+                                    <Form.Control
+                                        required
+                                        type="password"
+                                        placeholder="Password"
+                                        className={`rounded-3`}
+                                        onChange={event => onChange(event, setPassword, encodeBase64)} />
+                                </FloatingLabel>
+                                <Button
+                                    variant="primary"
+                                    type="submit"
+                                    className={`text-white w-100 my-2 p-2`}
+                                    onClick={handleClick}>
+                                    Ingresa
+                                </Button>
+                                <div>
+                                    <RecoverPassword />
+                                </div>
+                            </div>
+                        </Form>
+                        <span className={`text-center mt-3 ${styles.fsMin9Modify}`}>
+                            Recuerda proteger tus datos
+                        </span>
+                    </Col>
+                </Row>
+            </Container>
             <Footer />
         </Container>
     );

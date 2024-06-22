@@ -17,11 +17,12 @@ export default function ProductDetail(props) {
 
     let [showSku, setShowSku] = useState('');
     let [showName, setShowName] = useState('');
-    let [productType, setProductType] = useState('');
+    let [genderType, setGenderType] = useState('');
     let [quantity, setQuantity] = useState('');
     let [price, setPrice] = useState('');
-    let [latitude, setLatitude] = useState('');
-    let [longitude, setLongitude] = useState('');
+    let [color, setColor] = useState('');
+    let [brand, setBrand] = useState('');
+    let [size, setSize] = useState('');
     let [productUpdate, setProductUpdate] = useState(null);
     let [editProductFlag, setEditProductFlag] = useState(true);
     
@@ -39,11 +40,12 @@ export default function ProductDetail(props) {
                 setEditProductFlag(true);
                 setShowSku(productSession.sku_code);
                 setShowName(productSession.name);
-                setProductType(productSession.product_type);
+                setGenderType(productSession.gender_type);
                 setQuantity(productSession.quantity);
                 setPrice(productSession.price);
-                setLatitude(productSession.latitude);
-                setLongitude(productSession.longitude);
+                setColor(productSession.color);
+                setBrand(productSession.brand);
+                setSize(productSession.size);
             }
         }
     }, []);
@@ -76,11 +78,12 @@ export default function ProductDetail(props) {
                     {
                         sku_code: response.sku_code,
                         name: response.name,
-                        product_type: response.productType,
+                        gender_type: response.genderType,
                         quantity: response.quantity,
                         price: response.price,
-                        latitude: response.latitude,
-                        longitude: response.longitude
+                        color: response.color,
+                        brand: response.brand,
+                        size: response.size
                     }
                 ));
                 setEditProductFlag(true);
@@ -160,8 +163,9 @@ export default function ProductDetail(props) {
             productType: productType,
             quantity: quantity,
             price: price,
-            latitude: latitude,
-            longitude: longitude
+            color: color,
+            brand: brand,
+            size: size
         }));
     };
 
@@ -172,8 +176,9 @@ export default function ProductDetail(props) {
                 product_type: data.productType,
                 quantity: data.quantity,
                 price: data.price,
-                latitude: data.latitude,
-                longitude: data.longitude
+                color: data.color,
+                brand: data.brand,
+                size: data.size
             }
         }
         return build;
@@ -189,7 +194,7 @@ export default function ProductDetail(props) {
                     </span>
                     <Form>
                         <div className={`shadow-lg p-4 rounded-4 bg-white ${styles.inputWidthModify}`}>
-                            <FloatingLabel controlId="firstname" label="SKU" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="sku" label="SKU" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -198,7 +203,7 @@ export default function ProductDetail(props) {
                                     value={showSku || ''}
                                     disabled={true} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="firstname" label="Nombre" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="name" label="Nombre" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -207,17 +212,47 @@ export default function ProductDetail(props) {
                                     value={showName || ''}
                                     disabled={true} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="firstname" label="Tipo de producto" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="brand" label="Marca" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
-                                    placeholder="Tipo de producto"
+                                    placeholder="Marca"
                                     className={`rounded-4`}
-                                    value={productType || ''}
+                                    value={brand || ''}
                                     disabled={editProductFlag}
-                                    onChange={event => onChange(event, setProductType, textToCapitalize)} />
+                                    onChange={event => onChange(event, setBrand, textToCapitalize)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Precio" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="gender" label="Género" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Género"
+                                    className={`rounded-4`}
+                                    value={genderType || ''}
+                                    disabled={editProductFlag}
+                                    onChange={event => onChange(event, setGenderType, textToCapitalize)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="color" label="Color" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Color"
+                                    className={`rounded-4`}
+                                    value={color || ''}
+                                    disabled={editProductFlag}
+                                    onChange={event => onChange(event, setColor, textToCapitalize)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="size" label="Talla" className={`my-2 text-secondary`}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Talla"
+                                    className={`rounded-4`}
+                                    value={size || ''}
+                                    disabled={editProductFlag}
+                                    onChange={event => onChange(event, setSize, null)} />
+                            </FloatingLabel>
+                            <FloatingLabel controlId="price" label="Precio por unidad" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -227,7 +262,7 @@ export default function ProductDetail(props) {
                                     disabled={editProductFlag}
                                     onChange={event => onChange(event, setPrice, null)} />
                             </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Cantidad" className={`my-2 text-secondary`}>
+                            <FloatingLabel controlId="quantity" label="Cantidad" className={`my-2 text-secondary`}>
                                 <Form.Control
                                     required
                                     type="text"
@@ -236,26 +271,6 @@ export default function ProductDetail(props) {
                                     value={quantity || ''}
                                     disabled={editProductFlag}
                                     onChange={event => onChange(event, setQuantity, null)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Latitud" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Latitud"
-                                    className={`rounded-4`}
-                                    value={latitude || ''}
-                                    disabled={editProductFlag}
-                                    onChange={event => onChange(event, setLatitude, null)} />
-                            </FloatingLabel>
-                            <FloatingLabel controlId="lastname" label="Longitud" className={`my-2 text-secondary`}>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Longitud"
-                                    className={`rounded-4`}
-                                    value={longitude || ''}
-                                    disabled={editProductFlag}
-                                    onChange={event => onChange(event, setLongitude, null)} />
                             </FloatingLabel>
                             {
                                 sku && productUpdate && editProductFlag ?

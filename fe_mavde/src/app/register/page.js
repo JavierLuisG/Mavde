@@ -192,7 +192,7 @@ export default function Register() {
                                     required
                                     type="email"
                                     placeholder="name@example.com"
-                                    className={`rounded-4`}
+                                    className={`rounded-3`}
                                     onChange={event => onChange(event, setEmail, emailToCapitalize)} />
                             </FloatingLabel>
                             <FloatingLabel controlId="firstname" label="Nombre(s)" className={`my-2 text-secondary`}>
@@ -200,7 +200,7 @@ export default function Register() {
                                     required
                                     type="text"
                                     placeholder="Nombre(s)"
-                                    className={`rounded-4`}
+                                    className={`rounded-3`}
                                     onChange={event => onChange(event, setFirstname, textToCapitalize)} />
                             </FloatingLabel>
                             <FloatingLabel controlId="lastname" label="Apellido(s)" className={`my-2 text-secondary`}>
@@ -208,7 +208,7 @@ export default function Register() {
                                     required
                                     type="text"
                                     placeholder="Apellido(s)"
-                                    className={`rounded-4`}
+                                    className={`rounded-3`}
                                     onChange={event => onChange(event, setLastname, textToCapitalize)} />
                             </FloatingLabel>
                             <FloatingLabel controlId="phone" label="Teléfono" className={`my-2 text-secondary`}>
@@ -216,7 +216,7 @@ export default function Register() {
                                     required
                                     type="text"
                                     placeholder="Teléfono"
-                                    className={`rounded-4`}
+                                    className={`rounded-3`}
                                     onChange={event => onChange(event, setPhone, phoneToCapitalize)} />
                             </FloatingLabel>
                             <FloatingLabel controlId="password" label="Contraseña" className={`my-2 text-secondary`}>
@@ -224,7 +224,7 @@ export default function Register() {
                                     required
                                     type="password"
                                     placeholder="Password"
-                                    className={`rounded-4`}
+                                    className={`rounded-3`}
                                     onChange={event => onChange(event, setPassword, encodeBase64)} />
                             </FloatingLabel>
                             <div className="text-start">
